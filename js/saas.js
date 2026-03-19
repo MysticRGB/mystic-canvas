@@ -50,7 +50,7 @@ window.buildSaas = async function() {
     const name = b.name || 'Bot';
     const model = b.model || '';
     const users = b.users || 0;
-    return `<div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:14px">
+    return `<div class="g" style="display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:14px">
       <div style="width:8px;height:8px;border-radius:50%;background:${dotColor};flex-shrink:0;box-shadow:${isOnline ? '0 0 8px rgba(34,197,94,0.4)' : 'none'}"></div>
       <div style="flex:1;min-width:0">
         <div style="font-size:14px;color:rgba(255,255,255,0.85);font-weight:500">${name}</div>

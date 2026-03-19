@@ -22,7 +22,7 @@ html,body{background:#050505;overflow:hidden;width:100vw;height:100vh;font-famil
 .pane>div{position:relative;z-index:1;padding:72px 16px 40px;min-height:100vh}
 
 /* Cards */
-.g{background:rgba(5,5,5,0.55);border:1px solid rgba(255,255,255,0.08);border-radius:20px;position:relative;overflow:hidden;backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px)}
+.g{background:rgba(5,5,5,0.35);border:1px solid rgba(255,255,255,0.06);border-radius:20px;position:relative;overflow:hidden;backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px)}
 .dp{font-family:'Grafita Special',sans-serif;letter-spacing:0.02em}
 .cap{font-size:13px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.06em}
 
