@@ -163,7 +163,6 @@ window.buildDashboard = async function() {
     <div class="dp" style="font-size:40px;letter-spacing:0.03em;color:rgba(255,255,255,0.95);line-height:1;margin-bottom:14px">AI <span id="mt"></span></div>
     <div style="display:flex;gap:10px;flex-wrap:wrap">
       <a href="${CRM_URL}" target="_blank" class="nav-btn" style="position:relative;overflow:hidden">AI CRM<span style="position:absolute;top:0;left:0;right:0;bottom:0;pointer-events:none;background:linear-gradient(105deg,transparent 25%,rgba(214,190,159,0.35) 50%,transparent 75%);animation:crm-shine 3.2s ease-in-out infinite"></span></a>
-      <a href="https://mystic-graph-production.up.railway.app" target="_blank" class="nav-btn">🕸️ Граф</a>
     </div>
   </div>
 
