@@ -8,7 +8,7 @@ html,body{background:#050505;overflow:hidden;width:100vw;height:100vh;font-famil
 #bg3d{position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:0;pointer-events:none}
 
 /* Splash */
-#splash{position:fixed;top:0;left:0;right:0;bottom:0;background:#050505;z-index:99999;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.85s ease}
+#splash{position:fixed;top:0;left:0;right:0;bottom:0;background:transparent;z-index:99999;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.85s ease}
 
 /* Tab bar */
 #tabbar{position:fixed;top:0;left:0;right:0;height:52px;display:flex;align-items:center;gap:8px;padding:0 14px;background:rgba(5,5,10,0.3);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);z-index:9999;opacity:0;transition:opacity 0.7s ease}
@@ -18,7 +18,8 @@ html,body{background:#050505;overflow:hidden;width:100vw;height:100vh;font-famil
 
 /* Slider / panes */
 #slider{position:fixed;top:0;bottom:0;left:0;width:300vw;display:flex;transition:transform .3s cubic-bezier(.4,0,.2,1);opacity:0}
-.pane{width:100vw;height:100%;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch}
+.pane{width:100vw;height:100%;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;background:transparent}
+.pane-inner{position:relative;z-index:1;padding:72px 16px 40px;min-height:100vh}
 
 /* Cards */
 .g{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:20px;position:relative;overflow:hidden}
@@ -29,11 +30,7 @@ html,body{background:#050505;overflow:hidden;width:100vw;height:100vh;font-famil
 @keyframes crm-pulse{0%,100%{box-shadow:0 0 7px rgba(214,190,159,0.18),inset 0 0 10px rgba(214,190,159,0.04)}50%{box-shadow:0 0 18px rgba(214,190,159,0.4),inset 0 0 18px rgba(214,190,159,0.09)}}
 @keyframes crm-shine{0%{transform:translateX(-120%)}100%{transform:translateX(120%)}}
 
-/* Orbs for inner panes */
-@keyframes moveOrb1{0%{transform:translate(0,0) scale(1) rotate(0deg)}25%{transform:translate(-8vw,12vh) scale(1.08) rotate(6deg)}60%{transform:translate(10vw,6vh) scale(0.94) rotate(-4deg)}100%{transform:translate(0,0) scale(1) rotate(0deg)}}
-@keyframes moveOrb2{0%{transform:translate(0,0) scale(1) rotate(0deg)}35%{transform:translate(10vw,-10vh) scale(1.1) rotate(-8deg)}70%{transform:translate(-6vw,-4vh) scale(0.92) rotate(5deg)}100%{transform:translate(0,0) scale(1) rotate(0deg)}}
-@keyframes hueOrb1{0%{filter:hue-rotate(-30deg) brightness(1)}50%{filter:hue-rotate(30deg) brightness(1.25)}100%{filter:hue-rotate(-30deg) brightness(1)}}
-@keyframes hueOrb2{0%{filter:hue-rotate(30deg) brightness(1)}50%{filter:hue-rotate(-30deg) brightness(1.2)}100%{filter:hue-rotate(30deg) brightness(1)}}
+/* CSS-орбы удалены — WebGL фон (bg3d) единственный источник фона */
 
 /* Education accordion */
 details.edu summary::-webkit-details-marker{display:none}
