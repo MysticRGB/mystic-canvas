@@ -220,44 +220,6 @@ window.buildDashboard = async function() {
     }).join('')}
   </div>
 
-  <!-- Проекты -->
-  <div class="g" style="margin-bottom:10px;padding:16px">
-    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px">
-      <div class="cap">Проекты</div>
-      <div style="display:flex;gap:8px;align-items:baseline">
-        ${projByStatus.active ? `<span style="font-size:13px;color:rgba(255,255,255,0.7)">${projByStatus.active} в работе</span>` : ''}
-        ${projByStatus.draft ? `<span style="font-size:13px;color:rgba(255,255,255,0.35)">${projByStatus.draft} черновиков</span>` : ''}
-      </div>
-    </div>
-    ${Object.entries(projByCategory).map(([cat, projs]) => `
-      <div style="margin-bottom:12px">
-        <div style="font-size:11px;color:rgba(255,255,255,0.25);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px">${catLabels[cat] || cat}</div>
-        ${projs.map((p, i, arr) => {
-          const budgetText = p.budget ? (Number(p.budget) >= 1000000 ? Math.round(Number(p.budget)/1000000) + ' млн ₽' : Number(p.budget).toLocaleString('ru-RU') + ' ₽') : '';
-          return `<div style="display:flex;align-items:center;justify-content:space-between;padding:8px 0${i < arr.length - 1 ? ';border-bottom:1px solid rgba(255,255,255,0.04)' : ''}">
-            <div style="flex:1;min-width:0;display:flex;align-items:center;gap:8px;overflow:hidden">
-              <span style="font-size:14px;color:rgba(255,255,255,0.8);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${p.title}</span>
-              ${statusBadge(p.status)}
-            </div>
-            ${budgetText ? `<span style="font-size:13px;color:#D6BE9F;white-space:nowrap;margin-left:8px">${budgetText}</span>` : ''}
-          </div>`;
-        }).join('')}
-      </div>
-    `).join('')}
-  </div>
-
-  <!-- Контакты -->
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px">
-    <div class="g" style="padding:14px 16px;text-align:center">
-      <div style="font-size:28px;font-family:'Grafita',sans-serif;font-weight:300;color:#D6BE9F;line-height:1">${contactsTotal}</div>
-      <div style="font-size:11px;color:rgba(255,255,255,0.35);margin-top:6px;text-transform:uppercase;letter-spacing:0.05em">Контактов</div>
-    </div>
-    <div class="g" style="padding:14px 16px;text-align:center">
-      <div style="font-size:28px;font-family:'Grafita',sans-serif;font-weight:300;color:#D6BE9F;line-height:1">${projects.length}</div>
-      <div style="font-size:11px;color:rgba(255,255,255,0.35);margin-top:6px;text-transform:uppercase;letter-spacing:0.05em">Проектов</div>
-    </div>
-  </div>
-
   </div>`;
 
   // Init МИСТИК↔MYSTIC header animation
