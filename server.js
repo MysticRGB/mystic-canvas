@@ -11,7 +11,7 @@ app.use(express.static('.'));
 // ── Config ──
 const SUPABASE_PAT     = process.env.SUPABASE_PAT || 'sbp_70f66da5a172f5d805f8de39ccd8b9b6217acef6';
 const SUPABASE_PROJECT = process.env.SUPABASE_PROJECT || 'legkwcombbaepfcqsqxb';
-const FAL_ADMIN_KEY    = process.env.FAL_ADMIN_KEY || 'bd31b5c8-80cc-4648-a438-6e58c3d9c206:d63c7eeb40f79675b0d62ad643dd1875';
+const FAL_ADMIN_KEY    = process.env.FAL_ADMIN_KEY || 'bd31b5c8-85b1-475c-b687-4a765e7f78a4:6b7e45c6dcddebbfc2b0dba0a0c5a082';
 
 // ── Helpers ──
 function fetchJSON(url, opts = {}) {
@@ -64,7 +64,7 @@ app.get('/api/fal-usage', async (req, res) => {
   try {
     const start = req.query.start || new Date().toISOString().slice(0, 8) + '01';
     const result = await fetchJSON(
-      `https://api.fal.ai/v1/models/usage?start=${start}&limit=50`,
+      `https://rest.alpha.fal.ai/usage/requests?start_date=${start}`,
       { headers: { 'Authorization': `Key ${FAL_ADMIN_KEY}` } }
     );
     res.json(result);

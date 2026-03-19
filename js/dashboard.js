@@ -69,13 +69,14 @@ function sessionStatusBlock(s) {
 window.buildDashboard = async function() {
   const pane = document.getElementById('pane-dashboard');
 
-  const [projects, tasks, applications, freelancers, falData, sess] = await Promise.all([
+  const [projects, tasks, applications, freelancers, falData, sess, contactsData] = await Promise.all([
     API.sql("SELECT id, title, status, budget, deadline, actual_cost, category FROM projects WHERE status NOT IN ('archived') ORDER BY category, created_at DESC"),
     API.sql("SELECT id, title, status, project_id, is_published, assigned_to, budget, deadline, skills_required FROM tasks ORDER BY created_at DESC"),
     API.sql("SELECT id, task_id, status, created_at FROM applications"),
     API.sql("SELECT id, is_available, skills, rating FROM freelancers"),
     API.falUsage('2026-03-01'),
     API.session(),
+    API.sql("SELECT COUNT(*) as total FROM contacts"),
   ]);
 
   const now = new Date();
@@ -132,6 +133,18 @@ window.buildDashboard = async function() {
       if (lbl) { lbl.style.color = '#D6BE9F'; lbl.style.fontWeight = '600'; }
     }
   };
+
+  // Project stats
+  const contactsTotal = (contactsData[0] && contactsData[0].total) || 0;
+  const projByStatus = { active:0, draft:0, completed:0 };
+  projects.forEach(p => { if (projByStatus[p.status] !== undefined) projByStatus[p.status]++; });
+  const projByCategory = {};
+  projects.forEach(p => {
+    const cat = p.category || 'other';
+    if (!projByCategory[cat]) projByCategory[cat] = [];
+    projByCategory[cat].push(p);
+  });
+  const catLabels = { production:'Продакшн', presale:'Пресейл', internal:'Внутренние', other:'Прочие' };
 
   const pendingApps = applications.filter(a => a.status === 'pending').length;
   const oldApps = applications.filter(a =>
@@ -203,6 +216,44 @@ window.buildDashboard = async function() {
       const label = cat==='photo'?'Фото':cat==='video'?'Видео':'Аудио';
       return `<div id="gen-cat-${cat}" style="display:none"><div style="height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.06),transparent);margin-bottom:10px"></div><div style="font-size:11px;color:rgba(255,255,255,0.25);letter-spacing:0.05em;text-transform:uppercase;margin-bottom:8px">${label}</div><div style="display:flex;flex-direction:column;gap:6px;margin-bottom:6px">${models.map(([n,c])=>`<div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:13px;color:rgba(255,255,255,0.45)">${modelNames[n]||n}</span><span style="font-size:13px;font-weight:500;color:#D6BE9F">${rub(c)} ₽</span></div>`).join('')}</div></div>`;
     }).join('')}
+  </div>
+
+  <!-- Проекты -->
+  <div class="g" style="margin-bottom:10px;padding:16px">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px">
+      <div class="cap">Проекты</div>
+      <div style="display:flex;gap:8px;align-items:baseline">
+        ${projByStatus.active ? `<span style="font-size:13px;color:rgba(255,255,255,0.7)">${projByStatus.active} в работе</span>` : ''}
+        ${projByStatus.draft ? `<span style="font-size:13px;color:rgba(255,255,255,0.35)">${projByStatus.draft} черновиков</span>` : ''}
+      </div>
+    </div>
+    ${Object.entries(projByCategory).map(([cat, projs]) => `
+      <div style="margin-bottom:12px">
+        <div style="font-size:11px;color:rgba(255,255,255,0.25);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px">${catLabels[cat] || cat}</div>
+        ${projs.map((p, i, arr) => {
+          const budgetText = p.budget ? (Number(p.budget) >= 1000000 ? Math.round(Number(p.budget)/1000000) + ' млн ₽' : Number(p.budget).toLocaleString('ru-RU') + ' ₽') : '';
+          return `<div style="display:flex;align-items:center;justify-content:space-between;padding:8px 0${i < arr.length - 1 ? ';border-bottom:1px solid rgba(255,255,255,0.04)' : ''}">
+            <div style="flex:1;min-width:0;display:flex;align-items:center;gap:8px;overflow:hidden">
+              <span style="font-size:14px;color:rgba(255,255,255,0.8);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${p.title}</span>
+              ${statusBadge(p.status)}
+            </div>
+            ${budgetText ? `<span style="font-size:13px;color:#D6BE9F;white-space:nowrap;margin-left:8px">${budgetText}</span>` : ''}
+          </div>`;
+        }).join('')}
+      </div>
+    `).join('')}
+  </div>
+
+  <!-- Контакты -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px">
+    <div class="g" style="padding:14px 16px;text-align:center">
+      <div style="font-size:28px;font-family:'Grafita',sans-serif;font-weight:300;color:#D6BE9F;line-height:1">${contactsTotal}</div>
+      <div style="font-size:11px;color:rgba(255,255,255,0.35);margin-top:6px;text-transform:uppercase;letter-spacing:0.05em">Контактов</div>
+    </div>
+    <div class="g" style="padding:14px 16px;text-align:center">
+      <div style="font-size:28px;font-family:'Grafita',sans-serif;font-weight:300;color:#D6BE9F;line-height:1">${projects.length}</div>
+      <div style="font-size:11px;color:rgba(255,255,255,0.35);margin-top:6px;text-transform:uppercase;letter-spacing:0.05em">Проектов</div>
+    </div>
   </div>
 
   </div>`;
