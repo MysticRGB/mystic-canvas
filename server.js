@@ -64,7 +64,7 @@ app.get('/api/fal-usage', async (req, res) => {
   try {
     const start = req.query.start || new Date().toISOString().slice(0, 8) + '01';
     const result = await fetchJSON(
-      `https://rest.alpha.fal.ai/usage/requests?start_date=${start}`,
+      `https://api.fal.ai/v1/models/usage?start=${start}&limit=50`,
       { headers: { 'Authorization': `Key ${FAL_ADMIN_KEY}` } }
     );
     res.json(result);
