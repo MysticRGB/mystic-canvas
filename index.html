@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI МИСТИК</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- WebGL Background -->
+<canvas id="bg3d"></canvas>
+
+<!-- Splash -->
+<div id="splash">
+  <div style="position:relative;z-index:1;text-align:center;user-select:none">
+    <div id="sp-t" style="font-family:'Grafita Special',sans-serif;font-size:62px;letter-spacing:0.06em;line-height:1;display:inline-flex;align-items:baseline;gap:1px;overflow:hidden"></div>
+  </div>
+</div>
+
+<!-- Tab bar -->
+<div id="tabbar">
+  <button class="tb on" onclick="sw(0)">AI ДАШБОРД</button>
+  <button class="tb"    onclick="sw(1)">AI ЗАДАЧИ</button>
+  <button class="tb"    onclick="sw(2)">AI SaaS</button>
+</div>
+
+<!-- Content slider -->
+<div id="slider">
+  <div class="pane" id="pane-dashboard" style="padding:72px 16px 40px;position:relative"></div>
+  <div class="pane" id="pane-kanban" style="padding:72px 16px 40px;position:relative"></div>
+  <div class="pane" id="pane-saas" style="padding:72px 16px 40px;position:relative"></div>
+</div>
+
+<script src="js/webgl-bg.js"></script>
+<script src="js/app.js"></script>
+<script src="js/dashboard.js"></script>
+<script src="js/kanban.js"></script>
+<script src="js/saas.js"></script>
+</body>
+</html>
