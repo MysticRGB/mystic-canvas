@@ -26,8 +26,9 @@ html,body{background:#050505;overflow:hidden;width:100vw;height:100vh;font-famil
 .dp{font-family:'Grafita Special',sans-serif;letter-spacing:0.02em}
 .cap{font-size:13px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.06em}
 
-/* CRM button */
-@keyframes crm-pulse{0%,100%{box-shadow:0 0 7px rgba(214,190,159,0.18),inset 0 0 10px rgba(214,190,159,0.04)}50%{box-shadow:0 0 18px rgba(214,190,159,0.4),inset 0 0 18px rgba(214,190,159,0.09)}}
+/* Nav buttons */
+.nav-btn{padding:10px 20px;border-radius:14px;border:1px solid rgba(214,190,159,0.15);background:rgba(214,190,159,0.05);color:#D6BE9F;font-size:14px;line-height:1;font-family:'Grafita',sans-serif;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;letter-spacing:0.03em;-webkit-tap-highlight-color:transparent;transition:all 0.2s ease}
+.nav-btn:active{transform:scale(0.96);opacity:0.7}
 @keyframes crm-shine{0%{transform:translateX(-120%)}100%{transform:translateX(120%)}}
 
 /* CSS-орбы удалены — WebGL фон (bg3d) единственный источник фона */
