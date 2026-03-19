@@ -148,6 +148,7 @@ window.buildDashboard = async function() {
   <!-- Header -->
   <div style="margin-bottom:28px;display:flex;align-items:center;gap:14px;flex-wrap:nowrap">
     <div class="dp" style="font-size:40px;letter-spacing:0.03em;color:rgba(255,255,255,0.95);line-height:1;flex:1;min-width:0">AI <span id="mt"></span></div>
+    <a href="https://mystic-graph-production.up.railway.app" target="_blank" style="padding:6px 18px;border-radius:100px;border:1px solid rgba(214,190,159,0.3);background:rgba(214,190,159,0.07);color:#D6BE9F;font-size:14px;font-family:'Grafita',sans-serif;text-decoration:none;display:inline-flex;align-items:center;white-space:nowrap;letter-spacing:0.03em;flex-shrink:0;-webkit-tap-highlight-color:transparent">🕸️ Граф знаний</a>
     <a href="${CRM_URL}" target="_blank" style="padding:6px 18px;border-radius:100px;border:1px solid rgba(214,190,159,0.3);background:rgba(214,190,159,0.07);color:#D6BE9F;font-size:22px;line-height:1;font-family:'Grafita',sans-serif;text-decoration:none;display:flex;align-items:center;white-space:nowrap;letter-spacing:0.03em;position:relative;overflow:hidden;flex-shrink:0;animation:crm-pulse 2.8s ease-in-out infinite;-webkit-tap-highlight-color:transparent">AI CRM<span style="position:absolute;top:0;left:0;right:0;bottom:0;pointer-events:none;background:linear-gradient(105deg,transparent 25%,rgba(214,190,159,0.35) 50%,transparent 75%);animation:crm-shine 3.2s ease-in-out infinite"></span></a>
   </div>
 
