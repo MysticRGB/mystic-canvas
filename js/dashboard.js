@@ -3,7 +3,7 @@ const CRM_URL = 'https://web-production-461bf.up.railway.app';
 
 function statusBadge(status) {
   const map = {
-    active:    ['rgba(255,255,255,0.07)', 'rgba(255,255,255,0.14)', 'rgba(255,255,255,0.8)', 'В работе'],
+    active:    ['rgba(255,255,255,0.07)', 'rgba(255,255,255,0.14)', 'rgba(255,255,255,0.92)', 'В работе'],
     draft:     ['rgba(255,255,255,0.03)', 'rgba(255,255,255,0.07)', 'rgba(255,255,255,0.35)', 'Черновик'],
     completed: ['rgba(214,190,159,0.08)', 'rgba(214,190,159,0.2)', '#D6BE9F', 'Готово'],
     archived:  ['rgba(255,255,255,0.02)', 'rgba(255,255,255,0.05)', 'rgba(255,255,255,0.2)', 'Архив'],
@@ -48,17 +48,17 @@ function sessionStatusBlock(s) {
     <div style="padding:0 16px 16px;border-top:1px solid rgba(255,255,255,0.04)">
       <div style="display:flex;flex-direction:column;gap:12px;padding-top:12px">
         <div>
-          <div style="font-size:14px;font-weight:500;color:rgba(255,255,255,0.75);margin-bottom:4px">Почему Мистик устаёт</div>
+          <div style="font-size:14px;font-weight:500;color:rgba(255,255,255,0.9);margin-bottom:4px">Почему Мистик устаёт</div>
           <div style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.65">Когда слишком много информации держу в голове, начинаю хуже работать с памятью. Это называется контекст сессии — объём всего, что я сейчас помню.</div>
         </div>
         <div style="height:1px;background:rgba(255,255,255,0.04)"></div>
         <div>
-          <div style="font-size:14px;font-weight:500;color:rgba(255,255,255,0.75);margin-bottom:4px">Отдохнуть = новая сессия</div>
+          <div style="font-size:14px;font-weight:500;color:rgba(255,255,255,0.9);margin-bottom:4px">Отдохнуть = новая сессия</div>
           <div style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.65">Когда отправляешь <span style="color:#D6BE9F;font-family:monospace">/new</span> — я выгружаю всё важное в память, очищаю голову и просыпаюсь свежим.</div>
         </div>
         <div style="height:1px;background:rgba(255,255,255,0.04)"></div>
         <div>
-          <div style="font-size:14px;font-weight:500;color:rgba(255,255,255,0.75);margin-bottom:4px">Что я делаю сам</div>
+          <div style="font-size:14px;font-weight:500;color:rgba(255,255,255,0.9);margin-bottom:4px">Что я делаю сам</div>
           <div style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.65">Каждую ночь в 4:00 автоматически обновляю сессии — сохраняю важное и выхожу отдохнуть.</div>
         </div>
       </div>
@@ -172,7 +172,7 @@ window.buildDashboard = async function() {
   <!-- Alerts -->
   ${pendingApps > 0 ? `<div style="display:flex;align-items:center;gap:10px;padding:11px 14px;border-radius:14px;background:rgba(248,113,113,0.05);border:1px solid rgba(248,113,113,0.15);margin-bottom:10px"><div style="width:5px;height:5px;border-radius:50%;background:#F87171;flex-shrink:0"></div><div style="font-size:14px;color:rgba(248,113,113,0.85)">${pendingApps} заявок ожидают рассмотрения</div></div>` : ''}
   ${oldApps > 0 ? `<div style="display:flex;align-items:center;gap:10px;padding:11px 14px;border-radius:14px;background:rgba(248,113,113,0.05);border:1px solid rgba(248,113,113,0.15);margin-bottom:10px"><div style="width:5px;height:5px;border-radius:50%;background:#F87171;flex-shrink:0"></div><div style="font-size:14px;color:rgba(248,113,113,0.85)">${oldApps} заявок без ответа больше 48 ч</div></div>` : ''}
-  ${burning.length > 0 ? `<div class="g" style="margin-bottom:10px;border-color:rgba(248,113,113,0.12);padding:16px"><div class="cap" style="color:rgba(248,113,113,0.6);margin-bottom:10px">Горящие задачи</div>${burning.map((t,i,arr)=>{const dl=daysLeft(t.deadline);const dlText=dl<0?'просрочено '+Math.abs(dl)+' дн':dl===0?'сегодня':dl+' дн';const dlColor=dl<=0?'#F87171':'rgba(255,255,255,0.35)';return '<div style="display:flex;align-items:center;justify-content:space-between;padding:8px 0'+(i<arr.length-1?';border-bottom:1px solid rgba(255,255,255,0.05)':'')+'">'+'<div style="font-size:15px;color:rgba(255,255,255,0.8);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-right:8px">'+t.title+'</div>'+'<span style="font-size:13px;color:'+dlColor+';white-space:nowrap">'+dlText+'</span></div>';}).join('')}</div>` : ''}
+  ${burning.length > 0 ? `<div class="g" style="margin-bottom:10px;border-color:rgba(248,113,113,0.12);padding:16px"><div class="cap" style="color:rgba(248,113,113,0.6);margin-bottom:10px">Горящие задачи</div>${burning.map((t,i,arr)=>{const dl=daysLeft(t.deadline);const dlText=dl<0?'просрочено '+Math.abs(dl)+' дн':dl===0?'сегодня':dl+' дн';const dlColor=dl<=0?'#F87171':'rgba(255,255,255,0.35)';return '<div style="display:flex;align-items:center;justify-content:space-between;padding:8px 0'+(i<arr.length-1?';border-bottom:1px solid rgba(255,255,255,0.05)':'')+'">'+'<div style="font-size:15px;color:rgba(255,255,255,0.92);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-right:8px">'+t.title+'</div>'+'<span style="font-size:13px;color:'+dlColor+';white-space:nowrap">'+dlText+'</span></div>';}).join('')}</div>` : ''}
 
   <!-- Расходы AI -->
   <div class="g" style="margin-bottom:10px;padding:16px">
@@ -186,7 +186,7 @@ window.buildDashboard = async function() {
         { name:'Anthropic', cost:200, desc:'Claude Opus + Sonnet', pct:35 },
         { name:'fal.ai', cost:falTotalCost, desc:'Генерации (фото/видео/аудио)', pct:21, dyn:true },
         { name:'OpenRouter', cost:8, desc:'Субагенты, fallback', pct:1 },
-      ].map(s=>`<div style="display:flex;align-items:center;gap:10px"><div style="flex:1;min-width:0"><div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2px"><span style="font-size:14px;color:rgba(255,255,255,0.75);font-weight:500">${s.name}</span><span style="font-size:14px;color:#D6BE9F;font-weight:400">${rubFmt(s.dyn?s.cost:s.cost)} ₽</span></div><div style="display:flex;align-items:center;gap:8px"><div style="flex:1;height:3px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden"><div style="width:${s.pct}%;height:100%;background:rgba(214,190,159,0.4);border-radius:2px"></div></div><span style="font-size:11px;color:rgba(255,255,255,0.25);white-space:nowrap">${s.desc}</span></div></div></div>`).join('')}
+      ].map(s=>`<div style="display:flex;align-items:center;gap:10px"><div style="flex:1;min-width:0"><div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2px"><span style="font-size:14px;color:rgba(255,255,255,0.9);font-weight:500">${s.name}</span><span style="font-size:14px;color:#D6BE9F;font-weight:400">${rubFmt(s.dyn?s.cost:s.cost)} ₽</span></div><div style="display:flex;align-items:center;gap:8px"><div style="flex:1;height:3px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden"><div style="width:${s.pct}%;height:100%;background:rgba(214,190,159,0.4);border-radius:2px"></div></div><span style="font-size:11px;color:rgba(255,255,255,0.25);white-space:nowrap">${s.desc}</span></div></div></div>`).join('')}
     </div>
     <div style="height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.06),transparent);margin:4px 0 14px"></div>
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">

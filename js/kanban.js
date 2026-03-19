@@ -115,7 +115,7 @@ window.buildKanban = async function() {
     return `<div class="col" style="min-width:260px;max-width:300px;flex-shrink:0;display:flex;flex-direction:column;gap:8px">
       <div style="display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:14px;background:${col.bg};border:1px solid ${col.border}">
         <div style="width:3px;height:14px;border-radius:2px;background:${col.accent}"></div>
-        <span style="font-size:13px;font-weight:600;color:rgba(255,255,255,0.8);flex:1">${col.title}</span>
+        <span style="font-size:13px;font-weight:600;color:rgba(255,255,255,0.92);flex:1">${col.title}</span>
         <span style="font-size:11px;padding:2px 8px;border-radius:100px;background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.4)">${colTasks.length}</span>
       </div>
       ${cards}

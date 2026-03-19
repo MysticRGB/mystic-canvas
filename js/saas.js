@@ -53,7 +53,7 @@ window.buildSaas = async function() {
     return `<div class="g" style="display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:14px">
       <div style="width:8px;height:8px;border-radius:50%;background:${dotColor};flex-shrink:0;box-shadow:${isOnline ? '0 0 8px rgba(34,197,94,0.4)' : 'none'}"></div>
       <div style="flex:1;min-width:0">
-        <div style="font-size:14px;color:rgba(255,255,255,0.85);font-weight:500">${name}</div>
+        <div style="font-size:14px;color:rgba(255,255,255,0.92);font-weight:500">${name}</div>
         <div style="font-size:11px;color:rgba(255,255,255,0.35);margin-top:2px">${model}${users ? ' · ' + users + ' юзеров' : ''}</div>
       </div>
       <span style="font-size:11px;padding:3px 10px;border-radius:100px;background:${isOnline ? 'rgba(34,197,94,0.08)' : 'rgba(255,255,255,0.03)'};border:1px solid ${isOnline ? 'rgba(34,197,94,0.2)' : 'rgba(255,255,255,0.06)'};color:${statusColor};text-transform:uppercase;letter-spacing:0.05em">${statusText}</span>
@@ -64,7 +64,7 @@ window.buildSaas = async function() {
     const statusLabel = t.status === 'doing' ? '<span style="font-size:10px;padding:2px 7px;border-radius:100px;background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.2);color:rgba(59,130,246,0.8);margin-left:8px">в работе</span>' : t.status === 'done' ? '<span style="font-size:10px;padding:2px 7px;border-radius:100px;background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.2);color:rgba(34,197,94,0.8);margin-left:8px">готово</span>' : '';
     return `<div style="display:flex;align-items:center;gap:10px;padding:10px 0${i < arr.length - 1 ? ';border-bottom:1px solid rgba(255,255,255,0.04)' : ''}">
       <span style="font-size:14px;flex-shrink:0">${t.priority}</span>
-      <span style="font-size:14px;color:rgba(255,255,255,0.75);flex:1">${t.title}</span>
+      <span style="font-size:14px;color:rgba(255,255,255,0.9);flex:1">${t.title}</span>
       ${statusLabel}
     </div>`;
   }).join('');
@@ -91,7 +91,7 @@ window.buildSaas = async function() {
           <div style="font-size:11px;color:rgba(255,255,255,0.35);margin-top:4px">GB RAM</div>
         </div>
         <div style="text-align:center">
-          <div class="dp" style="font-size:28px;color:rgba(255,255,255,0.85);line-height:1">${botsCount}</div>
+          <div class="dp" style="font-size:28px;color:rgba(255,255,255,0.92);line-height:1">${botsCount}</div>
           <div style="font-size:11px;color:rgba(255,255,255,0.35);margin-top:4px">ботов активно</div>
         </div>
         <div style="text-align:center">
