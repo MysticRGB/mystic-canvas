@@ -4,9 +4,9 @@ window.buildSaas = async function() {
   const pane = document.getElementById('pane-saas');
 
   const HARDCODE_BOTS = [
-    { name: 'Katya Assistant', model: 'Claude 3.5 Sonnet', status: 'online', users: 2 },
-    { name: 'MysticAI v2', model: 'GPT-4o', status: 'online', users: 1 },
-    { name: 'Bloger Bot', model: 'GPT-4o-mini', status: 'offline', users: 0 },
+    { name: 'Katya Assistant', model: 'Gemini 2.5 Flash', status: 'online', users: 2 },
+    { name: 'MysticV2 Test Bot', model: 'Gemini 2.5 Flash', status: 'online', users: 1 },
+    { name: "Max's Assistant", model: 'Gemini 2.5 Flash', status: 'online', users: 1 },
   ];
 
   const HARDCODE_BACKLOG = [
@@ -30,8 +30,9 @@ window.buildSaas = async function() {
     ? saasTasksRaw.map(t => ({ title: t.title, priority: priorityIcon[t.priority] || '🟠', status: t.status }))
     : HARDCODE_BACKLOG;
 
-  const totalRamGB = serverStats.totalRamGB || 96;
-  const usedRamGB = serverStats.usedRamGB || 0;
+  // Сервер Mini Forum X-Pro: 96 GB RAM (хардкод — Railway не знает реальную RAM)
+  const totalRamGB = 96;
+  const usedRamGB = 2.5;
   const botsCount = bots.length;
   const ramPerBot = 0.3;
   const ramReserved = 8;
