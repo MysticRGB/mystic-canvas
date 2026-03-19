@@ -47,9 +47,17 @@ void main(){
   vec2 rv=vec2(fbm(st+1.0*q+vec2(1.7,9.2)+0.04*t),fbm(st+1.0*q+vec2(8.3,2.8)+0.03*t));
   float f=fbm(st+rv);
 
+  // Cool purple base
   vec3 color=vec3(0.04,0.0,0.1);
   color=mix(color,vec3(0.35,0.0,0.8),clamp((f*f)*2.5,0.0,1.0));
   color=mix(color,vec3(0.85,0.5,1.0),clamp(length(q)*0.8,0.0,1.0));
+
+  // Warm highlights — orange/red glints (opposite FBM offset)
+  vec2 q2=vec2(fbm(st*1.3+vec2(5.2,1.3)+0.02*t),fbm(st*1.3+vec2(3.7,8.1)-0.015*t));
+  float warm=fbm(st*0.8+q2*0.7+vec2(0.0,0.05*t));
+  float warmMask=smoothstep(0.15,0.65,warm)*smoothstep(0.3,0.0,abs(warm-0.4));
+  vec3 warmColor=mix(vec3(0.9,0.25,0.05),vec3(1.0,0.55,0.1),clamp(warm*2.0,0.0,1.0));
+  color+=warmColor*warmMask*0.35;
 
   float vignette=1.0-smoothstep(0.5,1.5,length(vUv-0.5));
   color*=vignette*1.5;
